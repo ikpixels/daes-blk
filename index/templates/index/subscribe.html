@@ -1,0 +1,25 @@
+{% load static %}
+<section class="my-4" id="subscribe_section" style="background:url({% static 'img/sub.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;">
+   <div class="container">
+       <div class="row rounded p-2 mx-1" style="background-color:rgba(0,0,153,0.7);">
+           <div class="col-sm-12 col-lg-4 py-4 text-center">
+                <h4 class="mt-2">Sign up for news letter
+                  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                </h4>
+           </div>
+           <div class="col-sm-12 col-lg-4 py-4">
+              <form id="Subscribe-form">
+                 <input type="email" id="Subscribe_email" name="email" placeholder="example@gmail.com" required="true">
+              </form>
+              <div id="subscr_info">
+                   <!--------Notificatio from ajax--------->  
+              </div>
+           </div>
+           <div class="col-sm-12 col-lg-4 py-4 mt-2">
+              <a class="Subscribe_btn" id="Subscribe" href="javascript:void(0);" class="mr-2">Subscribe</a>
+              <a class="unsubscribe_btn" id="Unsubscribe" href="javascript:void(0);" class="mt-4">Unsubscribe</a>
+           </div>
+       </div>
+   </div>
+</section>

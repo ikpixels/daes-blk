@@ -1,0 +1,111 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">{{team}}</a>
+          <hr>
+          <div class="item_category">
+             <div >
+                <a href="javascripts:void(0)">TEAM</a>
+             </div>
+             <div class="item_content p-4 rounded">
+                 <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                       <a href="{% url 'index:team2' 'DAC'%}">DAC</a>
+                       <a href="{% url 'index:team2' 'DAECC'%}">DAECC</a>
+                       <a href="{% url 'index:team2' 'DSP'%}">DSP</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+                       <a href="{% url 'index:team2' 'Msamala ASP'%}">Msamala ASP</a>
+                       <a href="{% url 'index:team2' 'Nkaya ASP'%}">Nkaya ASP</a>
+                       <a href="{% url 'index:team2' 'Kachenga ASP'%}">Kachenga ASP</a>
+                       <a href="{% url 'index:team2' 'Chanthunya ASP'%}">Chanthunya ASP</a>
+                       <a href="{% url 'index:team2' 'Kalembo ASP'%}">Kalembo ASP</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+                       <a href="{% url 'index:team2' 'Amidu ASP'%}">Amidu ASP</a>
+                       <a href="{% url 'index:team2' 'Sawali ASP'%}">Sawali ASP</a>
+                       <a href="{% url 'index:team2' 'Matola ASP'%}">Matola ASP</a>
+                       <a href="{% url 'index:team2' 'Phalula ASP'%}">Phalula ASP</a>
+                       <a href="{% url 'index:team2' 'Toleza ASP'%}">Toleza ASP</a>
+                    
+                    </div>
+                 
+                </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+
+</section>
+
+
+<!----------------key partners section--------------->
+<section class="mb-4 p-2" style="background-color:#f2f2f2;" >
+     <div class="container">
+        <div class="container">
+          <div class="row">
+             <div class="col-sm-12 col-lg-6">
+                 <div>
+                    {% if team.file %}
+                    <img src="{{team.file.url}}" class="d-block w-100 rounded">
+                    {% else %} 
+                    <img src="{% static 'img/blk1.png' %}" class="d-block w-100 rounded">
+                    {% endif %}
+                 </div>
+             </div>
+
+             <div class="col-sm-12 col-lg-6">
+                 <div class="p-2 rounded">
+                    <h4>{{team}}</h4><hr>
+                    <p>Cordination : {{team.cordination}}</p>
+                    <p>{{team.specify}}</p>
+                    <p>{{team.position}}</p>
+                    <p>Organisation : {{team.Orgnisation}}</p>
+                    <p>{{team.desination}}</p>
+                    <p>{{team.description}}</p><hr>
+                    <p><i class="fa fa-envelope mr-2" aria-hidden="true"></i>{{team.email}}</p>
+                    <p><i class="fa fa-phone mr-2" aria-hidden="true"></i>{{team.phone}}</p><hr>
+
+                    <div class="text-center">
+                    {% if team.facebook %}
+                    <a class="mr-4" href="{{team.facebook}}"><i class="fab fa-facebook-f"></i></i></a>
+                    {% endif %}
+
+                    {% if team.linkedin %}
+                       <a href="{{team.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+                    </div>
+                    
+                 </div>
+             </div>
+          </div>
+        </div>
+     </div>
+{% if team.whatsapp %}
+    <div class="text-center" title="{{team.desination}}" accesskey="{{team.whatsapp}}" id="mywap2"></div>
+{% endif %}
+                    
+</section>
+
+{% include 'index/team2.html'%}
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+
+{% endblock %}

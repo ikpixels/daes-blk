@@ -1,0 +1,115 @@
+{% load static %}
+
+<section class="mt" id="footer" 
+         style="background:rgb(0,0,153);">
+	<div class="container">
+		 <div class="row">
+		 	  <div class="col-sm-12 col-lg-4">
+		 	  	  <div class="text-center p-2">
+		 	  	  	 <h4>BALAKA DAESS</h4>
+		 	  	  </div>
+		 	  	  <div class="p-2">
+		 	  	  	 <p class="text-justify ">District Agricultural Extension Services System (DAESS) is a decentralized extension system that seeks to enhance collaboration and coordination of service providers in agricultural extension and advisory services in order to promote harmonization and integration in service provision</p> 
+		 	  	  </div>
+		 	  </div>
+		 	  <div class="col-sm-12 col-lg-6">
+		 	  	  <div class="text-center p-2">
+		 	  	  	 <h4>QUICK SEARCH</h4>
+		 	  	  </div>
+
+		 	  	  <div class="row rounded p-2" style="border:1px solid white;">
+
+		 	  	        <div class="col-sm-12 col-lg-4" id="footer_menu">
+		 	  	            <a href="{% url 'products:products' %}">Products</a>
+		 	  	            <a href="{% url 'event:event' %}">Upcoming event</a>
+		 	  	            <a href="{% url 'achievement:achievement' %}">Success stories</a>
+		 	  	            <a href="{% url 'event:document_view' %}">Documents</a>
+		 		            <a href="http://bit.do/DAECC-Balaka ">Dropbox</a>
+		 	  	            <a href="{% url 'career:job' %}">Career</a>
+		 	  	            <a href="{% url 'projects:projects' %}">Projects</a>
+		 	  	            <a href="{% url 'index:contact' %}">Contact</a>
+		 	            </div>
+
+		 	            <div class="col-sm-12 col-lg-4" id="footer_menu">   <a href="{% url 'publications:videos2' 'Agricuture Extension video' %}">Agricuture videos</a>
+		 	            	<a href="{% url 'publications:videos2' 'Nutrition Extension videos' %}">Nutrition videos</a>
+		 	            	<a href="{% url 'publications:videos2' 'Documentary' %}">Documentary</a>
+		 	  	            <a href="{% url 'index:ASP' 'Msamala ASP'%}">Msamala ASP</a>
+                            <a href="{% url 'index:ASP' 'Nkaya ASP'%}">Nkaya ASP</a>
+                            <a href="{% url 'index:ASP' 'Kachenga ASP'%}">Kachenga ASP</a>
+                           <a href="{% url 'index:ASP' 'Chanthunya ASP'%}">Chanthunya ASP</a>
+                           <a href="{% url 'index:ASP' 'Kalembo ASP'%}">Kalembo ASP</a>
+		 	            </div>
+		 	            
+		 	            <div class="col-sm-12 col-lg-4" id="footer_menu">
+		 	  	            <a href="{% url 'index:ASP' 'Amidu ASP'%}">Amidu ASP</a>
+                            <a href="{% url 'index:ASP' 'Sawali ASP'%}">Sawali ASP</a>
+                            <a href="{% url 'index:ASP' 'Matola ASP'%}">Matola ASP</a>
+                            <a href="{% url 'index:ASP' 'Phalula ASP'%}">Phalula ASP</a>
+                            <a href="{% url 'index:ASP' 'Toleza ASP'%}">Toleza ASP</a>
+                            <a href="{% url 'index:team2' 'DAC'%}">DAC Team</a>
+                            <a href="{% url 'index:team2' 'DAECC'%}">DAECC Team</a>
+                            <a href="{% url 'index:team2' 'DSP'%}">DSP Team</a>
+		 	            </div>
+
+		 	  	</div>
+		 	</div>
+		 	
+		 	<div class="col-sm-12 col-lg-2 p-2 text-center">
+
+		 		 <div class="text-center p-2">
+		 		 	<h4>GIVE A HAND</h4>
+		 		 </div>
+
+		 	  	 <div class="p-2">
+		 	  	 	<div class="my-4">
+		 	  	 		<img src="{% static 'img/donate.png'%}" height="100">
+		 	  	 	</div>
+		            <a href="{%url 'give:donation'%}" style="border:1px solid white;" class="mt-2 rounded" id="custom_btn">Donate now</a>
+		 	  	 </div>
+
+		 	</div>
+		 	<div class="col-sm-12 mt-4 text-center">
+		 		 <div >
+		 		 	<h4>Payment methods</h4>
+		 		 </div>
+		 		 <a href="https://www.paypal.com/us/home">
+		 		 	<img src="{% static 'img/paypal.jpg' %}" class="rounded" height="46">
+		 		 </a>
+		 		 <a href="https://www.tnm.co.mw/#/">
+		 		 	<img src="{% static 'img/mpamba.jpg' %}" class="rounded" height="46">
+		 		 </a>
+		 		 <a href="https://www.recharge.com/en/malawi/airtel-top-up?gclid=Cj0KCQiA0ZHwBRCRARIsAK0Tr-pWnkev9Uzzc5sliskBZz_0sLQUaPib3_7E1Kn5NVCI-xOMV_cDkCYaAotxEALw_wcB">
+		 		 	<img src="{% static 'img/airtelmoney.jpg' %}" class="rounded" height="46">
+		 		 </a>
+		 	</div><hr>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="btn-group p-2 my-1 ml-0" role="group" aria-label="daess">
+  
+
+       <div class="fb-share-button mt-0 mx-2" data-href="{{request.build_absolute_uri }}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+      </div>
+
+      <div>
+      <a class="twitter-share-button mt-2" href="https://twitter.com/intent/tweet?text=Hello%20world"data-size="large">
+        Tweet
+     </a>
+      </div>
+
+       <div class="ml-4">
+    	<a style="color:white;" href="javascripts:void(0);">Terms and Conditions</a> |
+    	<a style="color:white;" href="javascripts:void(0);">Privacy Policy</a>
+    </div>
+
+
+      
+</div>
+    
+	</div>
+
+	<div class="text-center my-4">
+		<p>© 2019 Balaka DAESS. All Rights Reserved</p>
+	</div>
+</section>

@@ -1,0 +1,217 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section class="animatedParent"  style="background:url({% static 'img/banner9.jpg'%});background-repeat: no-repeat;background-position: center center;background-size:cover;background-attachment:fixed;height:90vh;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'index:about_daess' %}">About DAESS</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'index:objective' %}">Objectives</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Sturcture</a>
+          <hr>
+          <div id="banner_text1"  style="padding-bottom:20px;padding-top:10px;">
+             <div>
+                <h2 class="animated bounceInLeft mb-4" style="color:rgb(0,0,153);"><strong>DAESS structures</strong></h2>
+                <h4 class="animated bounceInRight" style="color:white;"><strong >The DAESS has structures at village, Area and District levels as platforms for actors to interact, engage, dialogue and innovate.</strong></h4>
+
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:20px;">
+                <a class="" href="#donate">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+
+          <div id="banner_text2"  style="padding-bottom:20px;padding-top:10px;">
+             <div>
+                <h1 class="animated bounceInLeft mb-4" style="color:rgb(0,0,153);"><strong>DAESS structures</strong></h1>
+                <h1 class="animated bounceInRight" style="color:white;font-size:60px;"><strong >The DAESS has structures at village, Area and District levels as platforms for actors to interact, engage, dialogue and innovate.</strong></h1>
+
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:20px;">
+                <a class="" href="#donate">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+
+<section class="pt-4 pb-4 my-4">
+   <div class="container">
+       <div class="text-center div_header pb-4 pt-4">
+         <h4>Our main focal areas </h4>
+      </div>
+       <div class="row">
+           <div class="col-sm-12 col-lg-2">
+             
+           </div>
+           <div class="col-sm-12 col-lg-8 animatedParent text-center" data-sequence='500' id="focal_areas">
+               <p class='animated fadeInRight' data-id='1'><strong>Organization of farmers demands:</strong> Farmers in their wealth & gender categories together identify priority agriculture felt needs & decide on action to undertake.</p>
+               <p class='animated fadeInLeft' data-id='2'><strong>Organizing service providers’ response to farmers’ needs:</strong> identifying and engaging service providers that would respond to farmers’ needs.</p>
+                <p class='animated fadeInRight' data-id='3'><strong>Stakeholders Coordination, collaboration and co-location:</strong> Service providers can support famers’ needs as an individual organization or in collaboration with other stakeholders.</p>
+                <p class='animated fadeInLeft' data-id='4'><strong>Funding acquisition:</strong> district council will have to find ways of financing agricultural extension services from a diverse source of funds existing in the  districts</p>
+           </div>
+       </div>
+   </div>
+</section>
+
+
+
+
+<section class="my-2 p-4" style="background-color:#f2f2f2;"><a name="donate"></a>
+   <div class="container">
+
+      <div class="text-center div_header pb-4 pt-4">
+         <h4>DAESS Structures</h4>
+     
+      </div>
+      <div class="row animatedParent Structure" id="Structure">
+
+          <div class="col-sm-12 col-lg-12 mb-2">
+             <div class="text-center animated bounceInLeft" id="Committee" style="padding-top:50px;">
+                <h4>District Agriculture Committee</h4>
+                <h4 class="" >(DAC)</h4>
+
+                <div>
+                   <a id="dac_btn1" href="javascript:void(0);">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                 </a>
+                 <a id="dac_btn2" style="display:none;" href="javascript:void(0);">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                 </a>
+                </div>
+
+                <div id="dac" class="text-center animated bounceInRight Structure2 p-2 rounded">
+                
+                <p>The DAC comprises of elected members of the council (councilors), Members of Parliament and Traditional Authorities as ex-officio members.</p>
+
+                <p>The District Agricultural Development Officer (DADO) provides secretarial services.</p>
+             </div>
+
+                <img id="arrow1" src="{% static 'img/down-arrow.png' %}" height="50px">
+             </div>
+          </div>
+
+
+
+          <div class="col-sm-12 col-lg-12 mb-2">
+             <div class="text-center animated bounceInRight" style="padding-top:50px;">
+                <h4 >District Agricultural Extension Coordination Committee</h4>
+                <h4 >(DAECC)</h4>
+
+                <div>
+                   <a id="daecc_btn1" href="javascript:void(0);">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                   </a>
+                   <a id="daecc_btn2" style="display:none;" href="javascript:void(0);">
+                     <i class="fa fa-minus" aria-hidden="true"></i>
+                 </a>
+                </div>
+
+                <div id="daecc" class="text-center animated bounceInRight Structure2 p-2 rounded">
+      
+                 <p >The DAECC comprises all heads of agriculture technical departments (Crops, Extension, Land Resource, Livestock, Fisheries, Irrigation, Planning, Environment and Forestry) at the district level, Non-Governmental Organisations (NGOs) that provide agricultural extension and advisory services, micro-financing institutions, private sector, input suppliers and farmer organisations such as associations and cooperatives that operate at district level.</p>
+             </div>
+                <img id="arrow1" src="{% static 'img/down-arrow.png' %}" height="50px">
+             </div>
+          </div>
+
+          
+        
+          <div class="col-sm-12 col-lg-12 mb-2">
+             <div class="text-center animated bounceInLeft" style="padding-top:50px;">
+                <h4>The District Stakeholder Panel</h4>
+                <h4 class="">(DSP)</h4>
+
+                <div>
+                   <a id="dsp_btn1" href="javascript:void(0);">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                 </a>
+                 <a id="dsp_btn2" style="display:none;" href="javascript:void(0);">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                 </a>
+                </div>
+
+                <div id="dsp" class=" text-center animated bounceInRight Structure2 p-2 rounded">
+                <p>The Composition of the DSP comprises representatives of actors in the agricultural extension and advisory services including farmers operating in the district.</p>
+                <p>These are heads of agriculture technical departments (Land resource, Extension, Crops, Livestock, Irrigation, forestry, Fisheries and environment), representatives of smallholder food security farmers (who should form 50% of the total membership), semi-commercial and commercial farmers, Farmer Organisations (FOs), NGOs, agribusiness groups and community-based organisations.</p>
+             </div>
+                <img id="arrow1" src="{% static 'img/down-arrow.png' %}" height="50px">
+             </div>
+          </div>
+
+
+          <div class="col-sm-12 col-lg-12 mb-2">
+             <div class="text-center animated bounceInRight" style="padding-top:50px;">
+                <h4 >Area Stakeholder Panel</h4>
+                <h4 >(ASP)</h4>
+                
+                <div>
+                   <a id="asp_btn1" href="javascript:void(0);">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                 </a>
+                 <a id="asp_btn2" style="display:none;" href="javascript:void(0);">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                 </a>
+                </div>
+                
+                <div id="asp" class=" text-center animated bounceInRight Structure2 p-2 rounded">
+                 <p>The ASPs comprise of all actors in the agricultural sector operating under the respective Area Development Committee.</p>
+                 <p>This includes staff from Ministry of Agriculture, NGOs, Smallholder, Semi-Commercial and Commercial Farmers, Farmers Organizations, agribusiness groups, community-based groups</p>
+             </div>
+             <img id="arrow1" src="{% static 'img/down-arrow.png' %}" height="50px">
+             </div>
+          </div>
+
+
+          
+
+          <div class="col-sm-12 col-lg-12 mb-2">
+             <div class="text-center animated bounceInLeft" style="padding-top:50px;">
+                <h4>The Village Agriculture Committee</h4>
+                <h4 class="">(VAC)</h4>
+
+                <div>
+                   <a id="vac_btn1" href="javascript:void(0);">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                 </a>
+                 <a id="vac_btn2" style="display:none;" href="javascript:void(0);">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                 </a>
+                </div>
+
+                <div id="vac" class=" text-center animated bounceInRight Structure2 p-2 rounded">
+                <P>VACs comprise of all actors in the agricultural sector operating under the respective Group Village Headman.</P>
+                <p>Includes staff from Ministry of Agriculture and NGOs, smallholder, Semi-Commercial & Commercial Farmers, Farmers’ Organizations, agribusiness groups, community-based groups and relevant committees of the Council such as Village Nutrition Coordinating Committee (VNCC) and Village Natural Resource Management Committee (VNRMC) Smallholder Farmers should form 50% of the total membership.</p>
+             </div>
+
+             </div>
+          </div>
+      
+
+      </div>
+   </div>
+</section>
+
+
+{% include 'index/coordination.html' %}
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+{% endblock %}

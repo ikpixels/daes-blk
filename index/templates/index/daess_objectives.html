@@ -1,0 +1,113 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+
+<section class="animatedParent"  style="background:url({% static 'img/banner9.jpg'%});background-repeat: no-repeat;background-position: center center;background-size:cover;background-attachment:fixed;height:90vh;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'index:about_daess' %}">About DAESS</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Objectives</a>
+          <hr>
+          <div id="banner_text1">
+             <div>
+                <h2 class="animated bounceInLeft" style="color:rgb(0,0,153);"><strong>Main objective</strong></h2>
+                <h3 class="animated bounceInRight mb-4" style="color:white;"><strong >To empower farmers to demand high quality services from those that are best able to provide them.</strong></h3>
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:20px;">
+                <a class="" href="#daess">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+
+           <div  id="banner_text2">
+             <div>
+                <h1 class="animated bounceInLeft" style="color:rgb(0,0,153);"><strong>Main objective</strong></h1>
+                <h3 class="animated bounceInRight mb-4" style="color:white;font-size:70px;"><strong >To empower farmers to demand high quality services from those that are best able to provide them.</strong></h3>
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:20px;">
+                <a class="" href="#daess">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+
+<section class="pt-4 pb-4 my-4">
+   <div class="container">
+       <div class="text-center div_header pb-4 pt-4">
+         <h4>Our main focal areas </h4>
+      </div>
+       <div class="row">
+           <div class="col-sm-12 col-lg-2">
+             
+           </div>
+           <div class="col-sm-12 col-lg-8 animatedParent text-center" data-sequence='500' id="focal_areas">
+               <p class='animated fadeInRight' data-id='1'><strong>Organization of farmers demands:</strong> Farmers in their wealth & gender categories together identify priority agriculture felt needs & decide on action to undertake.</p>
+               <p class='animated fadeInLeft' data-id='2'><strong>Organizing service providers’ response to farmers’ needs:</strong> identifying and engaging service providers that would respond to farmers’ needs.</p>
+                <p class='animated fadeInRight' data-id='3'><strong>Stakeholders Coordination, collaboration and co-location:</strong> Service providers can support famers’ needs as an individual organization or in collaboration with other stakeholders.</p>
+                <p class='animated fadeInLeft' data-id='4'><strong>Funding acquisition:</strong> district council will have to find ways of financing agricultural extension services from a diverse source of funds existing in the  districts</p>
+           </div>
+       </div>
+   </div>
+</section>
+
+<section class="p-4 animatedParent" style="background-color:#f2f2f2;"><a name="daess"></a>
+   <div class="container" id="objectives">
+
+      <div class="text-center div_header pb-4 pt-4">
+         <h4>Other objectives</h4>
+      </div>
+      <div class="row" id="objectives2">
+
+          <div class="col-sm-12 col-lg-6">
+             <div id="objectives3" class='p-2 rounded my-1 animated fadeInRight' data-id='1'>
+                <p class=""><span style="font-size:30px;">T</span>o mobilise service providers as value chain players to collectively or individually respond to farmers’ prioritised agricultural needs.</p>
+             </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6">
+             <div id="objectives3" class='p-2 rounded my-1 animated fadeInLeft' data-id='2'>
+                <p class=""><span style="font-size:30px;">T</span>o instil sense of ownership and self-reliance amongst farmers whilst undertaking agricultural programmes.</p>
+             </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6">
+             <div id="objectives3" class='p-2 rounded my-1 animated fadeInRight' data-id='3'>
+                 <p class=""><span style="font-size:30px;">T</span>o provide platform for farmers to discuss and mutually agree on common agricultural needs to be addressed by themselves and those that may require assistance from elsewhere.</p>
+             </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6">
+             <div id="objectives3" class='p-2 rounded my-1 animated fadeInLeft' data-id='4'>
+                <p class=""> <span style="font-size:30px;">T</span>o enhance coordination, collaboration and co-location amongst stakeholders in provision of agricultural extension and advisory services. </p>
+             </div>
+          </div>
+      
+
+      </div>
+   </div>
+</section>
+
+{% include 'index/team2.html'%}
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+
+{% endblock %}

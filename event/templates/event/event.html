@@ -1,0 +1,121 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">></a>
+          <a href="#">Event</a>
+          <hr>
+          <h4>Upcoming events</h4>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="mt-4" id="index_event">
+
+   <div class="container">
+
+      {% if alert %}
+         <div id="alert" class="alert">
+            <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+            <p style="color:rgb(0,128,0);">{{alert}}</p>
+         </div>
+        {% endif %}
+
+      <div class="row animatedParent">
+          {% for event in event %}
+          <div class="col-sm-12 col-lg-6 animated fadeInUp">
+             <div class="my-2 top_index_event">
+                <a href="{% url 'event:event_detail' event.slug %}">
+                  {% if event.image %}
+                     <img src="{{event.image.url}}" class="img-fluid rounded">
+                  {% else %}
+                     <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+                  {% endif %}
+                </a>
+                <a href="{% url 'event:event_detail' event.slug %}">
+                <div class="inner_index_event rounded p-1"
+                style="background:url({% static 'img/event.png'%});background-repeat:no-repeat;background-size: cover;">
+                 <a href="javascript:void(0);">
+                    <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                    {{event.location}}
+                 </a><br>
+                 <a href="javascript:void(0);">
+                    <i class="fa fa-calendar mr-1" aria-hidden="true"></i>
+                    {{event.Event_date}}
+                 </a><br>
+                 <a href="javascript:void(0);">
+                    <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>
+                    {{event.time}}
+                 </a><br>
+                 <a href="{% url 'event:event_detail' event.slug %}"><small>Learn more...</small></a>
+
+
+                 {% if request.user.is_authenticated %}
+                     <div id="daess_edit">
+                        <a style="color:black;" href="{% url 'event:Editevent' event.id %}"><i class="fas fa-user-edit"></i></a>
+                        <a style="color:black;" href="{% url 'event:RemoveEvent' event.id %}"><i class="fas fa-trash-alt"></i></a>
+                     </div>
+                     {% endif %}
+         
+                
+                </div>
+                </a>
+
+             </div>
+             <p style="color:black;"><strong>{{event}}</strong></p>
+          </div>
+          {% empty %}
+          <div class="col-sm-12">
+            {% include 'index/error.html'%}
+          </div>
+          {% endfor %}
+  <!--_____________________pagination_________________________________-->
+           <div class="col-sm-12">
+               <div class="pagination">
+                <span class="step-links">
+                    {% if event.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{event.previous_page_number }}">
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{event.number }} of {{event.paginator.num_pages }}.
+                    </span>
+
+                    {% if event.has_next %}
+                        <a href="?page={{event.next_page_number }}">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="?page={{event.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+           </div>
+<!--__________________________________________________________________-->
+
+      </div>
+   </div>
+</section>
+
+
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+{% endblock %}

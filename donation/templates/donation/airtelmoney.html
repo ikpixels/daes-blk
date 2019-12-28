@@ -1,0 +1,31 @@
+{% load static %}
+<div class="text-center">
+                  <div class="text-left">
+                    <h4><img src="{% static 'img/airtelmoney.jpg' %}" class="rounded mr-2" height="20">Airtel Money</h4>
+                    <ul>
+                       <li>Dial *211#</li>
+                       <li>Select 2 for send money</li>
+                       <li>Select 1 for Airtel Number</li>
+                       <li>Select 1 for number then enter the phone number (DAESS number).</li>
+                    </ul>
+                    <p>Using the reference number/transaction number of the payment mediums above kindly complete the form below.</p>
+                  </div>
+                  <form id="donate_form" action="{% url 'give:airtelmoney2'%}">
+                      {% csrf_token %}
+                     <label>Full name</label>
+                     <input type="text" name="dzina">
+                     <label>Email</label>
+                     <input type="email" name="email">
+                     <label>Phone number</label>
+                     <input type="number" name="phone">
+                     <label>Payment Reference Number</label>
+                     <input type="text" name="ref">
+                     <label>Amount(USD)</label>
+                     <input type="number" name="amount">
+                     <button class="my-4" id="custom_btn">Submit</button>
+                  </form>
+
+                  <div class="text-left">
+                     <a id="airtel_btn" class="mr-4" href="{%url 'give:donation'%}">Paypal</a>
+                  </div>
+              </div>

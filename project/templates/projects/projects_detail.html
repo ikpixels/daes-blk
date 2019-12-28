@@ -1,0 +1,108 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'projects:projects'%}">Projects</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Project detail</a>
+          <hr>
+          <div class="item_category">
+             <div >
+                <a href="javascripts:void(0)">FILTER</a>
+             </div>
+             <div class="item_content p-4 rounded">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2">
+                      <a href="{% url 'projects:projects2' 'Bazale'%}">Bazale</a>
+                      <a href="{% url 'projects:projects2' 'Ulongwe'%}">Ulongwe</a>
+                      <a href="{% url 'projects:projects2' 'Mpilisi'%}">Mpilisi</a>
+                      <a href="{% url 'projects:projects2' 'Rivirivi'%}">Rivirivi</a>
+                      <a href="{% url 'projects:projects2' 'Phalula'%}">Phalula</a>
+                      
+                </div>
+                <div class="col-sm-12 col-lg-2">
+                       <a href="{% url 'projects:projects2' 'Msamala'%}">Msamala</a>
+                       <a href="{% url 'projects:projects2' 'Nkaya'%}">Nkaya</a>
+                       <a href="{% url 'projects:projects2' 'Kachenga'%}">Kachenga</a>
+                       <a href="{% url 'projects:projects2' 'Kachenga'%}">Chanthunya</a>
+                       <a href="{% url 'projects:projects2' 'Kalembo'%}">Kalembo</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2">
+                       <a href="{% url 'projects:projects2' 'Amidu'%}">Amidu</a>
+                       <a href="{% url 'projects:projects2' 'Sawali'%}">Sawali</a>
+                       <a href="{% url 'projects:projects2' 'Matola'%}">Matola</a>
+                       <a href="{% url 'projects:projects2' 'Toleza'%}">Toleza</a>
+                       <a href="{% url 'projects:projects2' 'Utale'%}">Utale</a>
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                       <h4 style="color:black;"><span>Almost </span>{{pj_count}} projects are being implemented in Balaka</h4>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+
+<section class="my-4">
+   <div class="container">
+       <div class="row">
+           <div class="col-sm-12 col-lg-8">
+              <div class="p-2 rounded" style="background-color:#f2f2f2;">
+                 <h4>{{pj}}</h4><hr>
+                 {% if pj.image %}
+                 <img src="{{pj.image.url}}" class="img-fluid">
+                 {% else %}
+                 <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+                 {% endif %}
+                <p>{{pj.body|safe}}</p>
+
+                {% if pj.PJ_link %}
+                <a id="custom_btn" href="{{pj.PJ_link}}">Learn more</a>
+                {% endif%}
+
+                {% if pj.docu %}
+                <a href="{% url 'projects:pj_document_detail' pj.id %}">
+                   <img src="{% static 'img/document.png'%}" height="30">
+                </a>
+                {% endif %}
+              </div>
+           </div>
+
+           <div class="col-sm-12 col-lg-4">
+               <div >
+                  <h4>Other projects</h4><hr>
+                  {% for pj in pj_d %}
+                   <div class="p-2 rounded" style="background-color:#f2f2f2;">
+                      <a href="{% url 'projects:PjDetail' pj.slug %}">
+                         <img src="{{pj.image.url}}" class="img-fluid rounded">
+                      </a>
+                      <p>{{pj}}</p>
+                   </div>
+                  {% endfor %}
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+{% endblock %}

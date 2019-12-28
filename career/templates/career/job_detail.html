@@ -1,0 +1,117 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/career.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'career:job' %}">Job</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Job detail</a>
+          <hr>
+          <div class="item_category">
+             <div >
+                <a href="javascript:void(0);">ALL CATEGORIES</a>
+             </div>
+             <div class="item_content p-4 rounded">
+                  <div class="row">
+                     <div class="col-sm-12 col-lg-3">
+                         <a href="{% url 'career:job_category' 'Consultancy' %}">Consultancy</a>
+                         <a href="{% url 'career:job_category' 'Contract' %}">Contract</a>
+                         <a href="{% url 'career:job_category' 'Event' %}">Event</a>
+                         <a href="{% url 'career:job_category' 'Full Time' %}">
+                          Full Time</a>
+                         <a href="{% url 'career:job_category' 'Funding' %}">Funding</a> 
+                     </div>
+                     <div class="col-sm-12 col-lg-3">
+                        
+                         <a href="{% url 'career:job_category' 'Hourly Paid' %}">Hourly Paid</a>
+                         <a href="{% url 'career:job_category' 'International' %}">International</a>
+                         <a href="{% url 'career:job_category' 'Internship' %}">Internship</a>
+                         <a href="{% url 'career:job_category' 'Part Time' %}">Part Time</a>
+                         <a href="{% url 'career:job_category' 'Scholarship' %}">Scholarship</a>
+                     </div>
+                     <div class="col-sm-12 col-lg-3">
+                         <a href="{% url 'career:job_category' 'Seasonal' %}">Seasonal</a>
+                         <a href="{% url 'career:job_category' 'Short-Term' %}">Short-Term</a>
+                         <a href="{% url 'career:job_category' 'Temporary' %}">Temporary</a>
+                         <a href="{% url 'career:job_category' 'Training' %}">Training</a>
+                         <a href="{% url 'career:job_category' 'Volunteer' %}">Volunteer</a>
+                     </div>
+                </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-4">
+    <div class="container">
+         <div class="row">
+             <div class="col-sm-12 col-lg-8 ">
+                <div class="p-2 rounded my-1" style="background-color:#f2f2f2;">
+
+                   {% if request.user.is_authenticated %}
+                     <div id="daess_edit">
+                        <a href="{% url 'career:EditJob' job.id %}"><i class="fas fa-user-edit"></i></a>
+                        <a href="{% url 'career:remove_job' job.id %}"><i class="fas fa-trash-alt"></i></a>
+                     </div>
+                  {% endif %}
+
+                 <div class="row my-4" >
+                     <div class="col-sm-12 col-lg-2">
+                        {% if job.file %}
+                        <img src="{{job.file.url}}" class="img-fluid">
+                        {% else %}
+                        <img src="{% static 'img/blk1.png' %}" class="img-fluid rounded">
+                        {% endif %}
+                     </div>
+                     <div class="col-sm-12 col-lg-10">
+                        <h4>{{job}}</h4>
+                        <p>{{job.orginisaton}} 
+                         <i class="fa fa-map-marker" aria-hidden="true"></i>
+                         {{job.location}} <span class="p-1" id="job_cat">{{job.category}}</span></p>
+                        <small>Posted {{job.whenpublished}}</small>
+                     </div>
+                 </div>
+                 <div>
+                    <hr>
+                    <p>{{job.body|safe}}</p>
+                    {% if job.link %}
+                    <a href="{{job.link}}" id="custom_btn">Apply now</a>
+                    {% endif %}
+                    <hr>
+                    <small style="color:red;">Clossing date {{job.closing_date}}</small>
+                 </div>
+                </div>
+             </div>
+
+             <div class="col-sm-12 col-lg-4">
+                <div class="rounded p-2 my-1" style="background-color:#f2f2f2;">  <h4>Other Opportunities</h4><hr>
+                   {% for job in jobView %}
+                     <p>
+                      <img src="{{job.file.url}}" height="64">
+                      <a href="{% url 'career:job_detail' job.slug %}">{{job}}</a>
+                    </p>
+                   {% endfor %}
+                </div>
+             </div>
+         </div>
+    </div>
+</section>
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+
+{% endblock %}

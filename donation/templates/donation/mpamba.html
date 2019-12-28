@@ -1,0 +1,32 @@
+{% load static %}
+<div>
+                  <div class="text-left">
+                
+                    <h4><img src="{% static 'img/mpamba.jpg' %}" class="rounded" height="30">TNM Mpamba</h4>
+                    <ul>
+                       <li>Dial *444#</li>
+                       <li>Select 1 for send money</li>
+                       <li>Select 1 for TNM Mpamba</li>
+                       <li>Select 1 for send to wallet then enter the phone number (DAESS number).</li>
+                    </ul>
+                    <p>Using the reference number/transaction number of the payment mediums above kindly complete the form below.</p>
+                  </div>
+                  <form id="donate_form" action="{% url 'give:mpamba2'%}">
+                      {% csrf_token %}
+                     <label>Full name</label>
+                     <input type="text" name="dzina">
+                     <label>Email</label>
+                     <input type="email" name="email">
+                     <label>Phone number</label>
+                     <input type="number" name="phone">
+                     <label>Payment Reference Number</label>
+                     <input type="text" name="ref">
+                     <label>Amount(USD)</label>
+                     <input type="number" name="amount">
+                     <button class="my-4" id="custom_btn">Submit</button>
+                  </form>
+
+                  <div class="text-left">
+                     <a id="mpamba_btn" href="{%url 'give:donation'%}">Paypal</a>
+                  </div>
+              </div>

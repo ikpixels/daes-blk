@@ -1,0 +1,96 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">></a>
+          <a href="{% url 'event:event' %}">Event</a>
+          <a href="javascripts:void(0);">></a>
+          <a href="#">Event detail</a>
+          <hr>
+          <h4>Upcoming event</h4>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-2 event_list">
+   <div class="container">
+      <div class="row">
+          <div class="col-sm-12 col-lg-8">
+              <div class="p-2 rounded" style="background-color:#f2f2f2;">
+                 <h4>{{event}}</h4><hr>
+                 {% if event.image %}
+                 <img src="{{event.image.url}}" class="img-fluid rounded">
+                 {% else %}
+                 <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+                 {% endif %}
+                 <div class="my-4 text-center">
+                    <a class="mr-4" href="javascript:void(0);">
+                    <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                    {{event.location}}
+                 </a>
+                 <a class="mr-4" href="javascript:void(0);">
+                    <i class="fa fa-calendar mr-1" aria-hidden="true"></i>
+                    {{event.Event_date}}
+                 </a>
+                 <a class="mr-4" href="javascript:void(0);">
+                    <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>
+                    {{event.time}}
+                 </a>
+                 </div>
+                 <p>{{event.body|safe}}</p>
+              </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-4">
+              <div class="p-2" style="">
+                 <h4>Other upcoming events</h4><hr>
+                 {% for item in Other_Event %}
+                    <div class="rounded p-2" style="background-color:#f2f2f2;">
+                       <div style="position:relative;">
+                          <img src="{{item.image.url}}" class="img-fluid rounded">
+
+                          <a href="{% url 'event:event_detail' item.slug %}">
+                          <div id="sidebar_event">
+                              
+                          <a href="javascript:void(0);">
+                            <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                            {{event.location}}
+                          </a><br>
+                          <a href="javascript:void(0);">
+                              <i class="fa fa-calendar mr-1" aria-hidden="true"></i>
+                              {{event.Event_date}}
+                          </a><br>
+                          <a href="javascript:void(0);">
+                              <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>
+                              {{event.time}}
+                          </a><br>
+
+                          </div>
+                          </a>
+                       </div>
+                        
+                       <p>{{item}}</p>
+                       <a href="{% url 'event:event_detail' event.slug %}">Learn more...</a>
+                    </div>
+                 {% endfor %}
+              </div>
+          </div>
+      </div>
+   </div>
+</section>
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+{% endblock %}

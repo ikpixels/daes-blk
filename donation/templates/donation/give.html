@@ -1,0 +1,65 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section class="animatedParent"  style="background:url({% static 'img/ddn.jpg'%});background-repeat: no-repeat;background-position: center center;background-size:cover;background-attachment:fixed;height:90vh;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Donate</a>
+          <hr>
+          <div  style="padding-bottom:200px;padding-top:100px;">
+             <div>
+                <h1 class="animated bounceInRight" style="color:white;"><strong >Make a difference !!</strong></h1>
+                <h2 class="animated bounceInLeft" style="color:rgb(0,0,153);"><strong>Donate now</strong></h2>
+             </div>
+             <div class="text-center animated bounceInDown">
+                <a class="" href="#donate">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-2 donate">
+   <div class="container">
+       <div class="row">
+           <div class="col-sm-12 col-lg-4">
+               
+           </div>
+           <div class="col-sm-12 col-lg-4">
+<!-------------------------------paypal form-------------------------->
+               <div  class="text-center paypal" id="paypal_btn_area"><a name="donate"></a>
+
+                  <form id="donate_form" action="{% url 'give:donation'%}">
+                      {% csrf_token %}
+                     <label>Full name</label>
+                     <input type="text" name="dzina">
+                     <label>Email</label>
+                     <input type="email" name="email">
+                     <label>Amount(USD)</label>
+                     <input type="number" name="amount">
+                     <button class="my-4" id="custom_btn">Continue to paypal</button>
+                  </form>
+
+                  <div class="">
+                     <a id="airtel_btn" class="mr-4" href="javascript:void(0);">Airtel money</a>
+                     <a id="mpamba_btn" href="javascript:void(0);">Mpamba</a>
+                  </div>
+
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+{% endblock %}

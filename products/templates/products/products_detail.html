@@ -1,0 +1,148 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/market.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{%url 'products:products'%}">products</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">{{item.slug}} detail</a>
+          <hr>
+          <div class="item_category">
+             <div >
+                <a href="javascript:void(0);">ALL CATEGORIES
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </a>
+             </div>
+             <div class="item_content p-4 rounded">
+                 <div class="row">
+                    <div class="col-sm-12 col-lg-2">
+                       <p>Categories</p>
+                        <a href="{% url 'products:products2' 'Beans'%}">Beans</a>
+                        <a href="{% url 'products:products2' 'Cereals'%}">Cereals</a>
+                        <a href="{% url 'products:products2' 'Chemicals'%}">Chemicals</a>
+                        <a href="{% url 'products:products2' 'Fruits'%}">Fruits</a>
+                        <a href="{% url 'products:products2' 'Garri'%}">Garri</a>
+                        <a href="{% url 'products:products2' 'Livestock'%}">Livestock</a>
+                        <a href="{% url 'products:products2' 'Vegetables'%}">Vegetables</a>
+                        <a href="{% url 'products:products2' 'Tractors'%}">Tractors</a>
+                        <a href="{% url 'products:products2' 'Seeds'%}">Seeds</a>
+                        <a href="{% url 'products:products2' 'Plantain'%}">Plantain</a>
+                        
+                    </div>
+                    <div class="col-sm-12 col-lg-2">
+                       <p>Location</p>
+                       <a href="{% url 'products:products2' 'Msamala'%}">Msamala</a>
+                       <a href="{% url 'products:products2' 'Nkaya'%}">Nkaya</a>
+                       <a href="{% url 'products:products2' 'Kachenga'%}">Kachenga</a>
+                       <a href="{% url 'products:products2' 'Chanthunya'%}">Chanthunya</a>
+                       <a href="{% url 'products:products2' 'Kalembo'%}">Kalembo</a>
+                        <a href="{% url 'products:products2' 'Amidu'%}">Amidu</a>
+                       <a href="{% url 'products:products2' 'Sawali'%}">Sawali</a>
+                       <a href="{% url 'products:products2' 'Matola'%}">Matola</a>
+                       <a href="{% url 'products:products2' 'Phalula'%}">Phalula</a>
+                       <a href="{% url 'products:products2' 'Toleza'%}">Toleza</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+                       <div>
+                          <img src="{{item2.file.url}}" class="rounded img-fluid">
+                       </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                       <div>
+                          <h4 style="color:rgb(0,0,128);">{{item2}}</h4><hr>
+
+                          {% if item2.new_price %}
+                          <p><strong><s>MK {{item2.price}}</s></strong></p>
+                          <p><strong>MK {{item2.new_price}}</strong></p>
+                          {% else %}
+                          <p><strong>MK {{item2.price}}</strong></p>
+                          {% endif %}
+                          <a href="{% url 'products:product_detail' item2.slug %}">More info...</a>
+                       </div>
+                    </div>
+                </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-2">
+    <div class="container">
+        <div class="row p-4 rounded" style="background-color:#f2f2f2;">
+            <div class="col-sm-12 col-lg-6 text-center">
+              <div id="etalage2">
+               <ul id="etalage">
+                  <li>
+                       <img class="etalage_thumb_image w-100" src="{{item.file.url}}" alt="trtr" >
+                       <img class="etalage_source_image w-100" src="{{item.file.url}}" alt="rrryt" >
+                  </li>
+               </ul>
+              </div>
+              <div id="produce">
+               {% if item.file %}
+                     <img id="produ"  src="{{item.file.url}}" class="d-block w-100 rounded">
+                     {% else %}
+                     <img id="produ" src="{% static 'img/blk1.png' %}" class="d-block w-100 rounded">
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+               <div class="p-4 rounded">
+                  <h4>{{item}}</h4><hr>
+
+                  {% if item.new_price %}
+                  <h4 style="color:red"><s>MK {{item.price}}</s>
+                  <span style="color:green"><strong>MK {{item.new_price}} {{item.price_com}}</strong></span>
+                  </h4>
+                  {% else %}
+                  <h4 style="color:green"><strong>MK {{item.price}} {{item.price_com}}</strong></h4>
+                  {% endif %}
+                  <p>Available {{item.stock}}</p>
+                  <p>{{item.owner}}/{{item.real_name}}</p>
+                  <p>{{item.location}}</p>
+                  <p>{{item.phone}}</p>
+                  <p>{{item.email}}</p>
+               </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="pt-4 pb-4">
+  <div class="container">
+    <div class="text-center pb-4 div_header">
+       <h4>Related item </h4>
+   </div>
+    <div class="owl-carousel text-center" id="item_list">
+      {% for related in related %}
+         <div>
+            <a href="{% url 'products:product_detail' related.slug %}">
+               <img src="{{related.file.url}}" class="img-fluid rounded" >
+            </a>
+         </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if item.whatsapp %}
+      <div class="text-center" title="{{item}}" accesskey="{{item.whatsapp}}" id="mywap2"></div>
+{% endif %}
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+{% if partners %}
+<section class="pt-4 pb-4">
+  <div class="container">
+    <div class="text-center pb-4 div_header">
+       <h4>Our Key Partners </h4>
+       <p>Major agricultural stakeholders in the district</p>
+   </div>
+    <div class="owl-carousel text-center" id="item_list9">
+      {% for partners in partners %}
+         <div>
+            <a href="{{partners.link}}">
+
+               {% if partners.file %}
+               <img src="{{partners.file.url}}" class="img-fluid" >
+               {% else %}
+               <img src="{% static 'img/blk1.png' %}" class="img-fluid rounded">
+               {% endif %}
+
+            </a>
+         </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endif %}

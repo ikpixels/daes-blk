@@ -1,0 +1,114 @@
+{% load static from staticfiles %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="{% static 'img/fav.png'%}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/cropper.css'%}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/etalage.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
+  <link rel="stylesheet" href="{% static 'css/animations.css' %}" type="text/css">
+  <link rel="stylesheet" href="{%static 'css/floating-wpp.min.css'%}">
+  <!----google font----->
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Francois+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+
+  <title>{{title}}</title>
+</head>
+
+<body >
+
+
+ <button  id="scroll_up_btn">
+          <img src="{% static 'img/up_arrow.png' %}" height="50">
+</button>
+{% include 'index/header.html' %}
+
+{% block body %}
+
+{% endblock %}
+
+{% include 'index/footer.html' %}
+
+
+
+
+<!------------jquery js--------------------------->
+<script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+
+
+<!------------libaries js--------------------------->
+<script type="text/javascript" src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/cropper.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick.js'%}"></script>
+<script  src="{% static 'js/jquery.etalage.min.js' %}"></script>
+<script src="{% static 'js/css3-animate-it.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/floating-wpp.min.js'%}"></script>
+
+<script src="https://use.fontawesome.com/15343f38df.js"></script>
+<script src="https://use.fontawesome.com/15343f38df.js"></script>
+<script src="https://kit.fontawesome.com/90a5fe2509.js" crossorigin="anonymous"></script>
+
+<!------------google js--------------------------->
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=312082092790672&autoLogAppEvents=1"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://kit.fontawesome.com/dcb2432c33.js"></script>
+
+<!------------custom js--------------------------->
+<script src="{% static 'js/ik_carousel.js' %}"></script>
+<script src="{% static 'js/ajax.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+
+     $("#menu_btn").click(function(){
+        $(".min_navbar").css('display','block')
+        $(".min_navbar").css('trans','block')
+     });
+
+     $("#menu_btn2").click(function(){
+        $(".min_navbar").css('display','none')
+     });
+
+   });
+
+   //Get the button
+var mybutton = document.getElementById("scroll_up_btn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+$(document).ready(function(){
+  $('#scroll_up_btn').click(function(){
+       document.body.scrollTop = 0;
+       document.documentElement.scrollTop = 0;
+  })
+})
+</script>
+</body>
+</html>

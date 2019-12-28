@@ -1,0 +1,203 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section class="animatedParent"  style="background:url({% static 'img/banner3.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size:cover;background-attachment:fixed;height:90vh;">
+
+  <div style="background-color:rgba(0,128,0,0.3);height:90vh;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">{{title2}}</a>
+          <hr>
+          <div>
+             <div>
+                <h1 class="animated bounceInRight mb-4" style="color:white;"><strong >{{title}}</strong></h1>
+
+                <div id="asp_membership">
+                    <div class="text-center p-1 mr-2 animated flip">
+                       <p>Male</p><hr>
+                       <h4>{{cord.male}}</h4>
+                    </div>
+                    <div class="text-center mr-2 p-1 animated flip">
+                       <p>Female</p><hr>
+                       <h4>{{cord.female}}</h4>
+                    </div>
+                    {% if cord.vac_no %}
+                    <div class="text-center p-1 animated flip">
+                       <p>VAC</p><hr>
+                       <h4>{{cord.vac_no}}</h4>
+                    </div>
+                    {% endif %}
+                </div>
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:150px;">
+                <a class="" href="#asp">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+ </div>
+</section>
+
+<section class="mt-4"><a name="asp"></a>
+   <div class="container">
+       <div class="row">
+           <div class="col-sm-12 col-lg-9 mb-2">
+              <div class="p-2 rounded" >
+                 <p><strong>Membership</strong></p><hr>
+                 <p>Male : {{cord.male}}</p>
+                 <p>Female : {{cord.female}}</p>
+                 <p>Total : {{cord.total}}</p><hr>
+
+                 {% if cord.vac_no %}
+                 <p>Total VACs: {{cord.vac_no}}</p><hr>
+                 <p>{{cord.vac_name}}</p>
+                 {% endif %}
+
+                 <p>{{cord.discription|safe}}</p>
+
+                </div>
+
+                <div class="row">
+                     <div class="col-sm-12 col-lg-4 my-2">
+                         <div id="asp_btn">
+                            <img src="{% static 'img/item3.jpg' %}" class="img-fluid rounded">
+
+                            <a href="{% url 'products:products2' name %}">
+                              <div class="text-center p-4 rounded" id="asp_content">
+                               <h4>View all {{title}} Products</h4>
+                            </div>
+                            </a>
+
+                         </div>
+                     </div>
+
+                     <div class="col-sm-12 col-lg-4 my-2">
+                         <div id="asp_btn">
+                            <img src="{% static 'img/item2.jpg' %}" class="img-fluid rounded">
+
+                            <a href="{% url 'projects:projects2' name %}">
+                              <div class="text-center p-4 rounded" id="asp_content">
+                               <h4>Explore projects implemented in {{title}}</h4>
+                            </div>
+                            </a>
+
+                         </div>
+                     </div>
+
+                     <div class="col-sm-12 col-lg-4 my-2">
+                         <div id="asp_btn">
+                            <img src="{% static 'img/item2.jpg' %}" class="img-fluid rounded">
+
+                            <a href="{% url 'event:event2' name %}">
+                              <div class="text-center p-4 rounded" id="asp_content">
+                                <h4>{{title}} upcomming events</h4>
+                            </div>
+                            </a>
+
+                         </div>
+                     </div>
+
+                  
+                </div>
+
+
+                   <div class="container">
+           {% if team %}
+                <p><strong>Team</strong></p><hr>
+               <div class="owl-carousel text-center" id="item_list2">
+                    {% for contact in team %}
+                      <div class="p-2 rounded teammember" id="teammember">
+                          <h4 style="color:white;"><strong>{{contact.name}}</strong></h4>
+                         <img src="{{contact.file.url}}" class="img-fluid rounded-circle">
+                         <p>{{contact.position}}</p>
+
+                              <div class="text-center">
+
+                    {% if contact.facebook %}
+                    <a class="mr-4" href="{{contact.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                    {% else %}
+                    <a class="mr-4" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+
+                    {% if contact.linkedin %}
+                       <a class="mr-4" href="{{contact.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                    {% else %}
+                       <a class="mr-4" href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+
+                    </div>
+                        
+                        <div class="rounded p-2 inner_teammember" id="inner_teammember">
+                         <h4 style="color:white;"><strong>{{contact.name}}</strong></h4>
+                  <img src="{{contact.file.url}}" class="img-fluid rounded-circle">
+                  <a href="{% url 'index:tema_detail' contact.slug %}">Chat with me</a>
+                           <div class="text-center">
+
+                    {% if contact.facebook %}
+                    <a class="mr-4" href="{{contact.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                    {% else %}
+                    <a class="mr-4" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+
+                    {% if contact.linkedin %}
+                       <a class="mr-4" href="{{contact.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                    {% else %}
+                       <a class="mr-4" href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+
+                    <a href="{% url 'index:tema_detail' contact.slug %}"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                        </div>
+           
+                      </div>
+                      {% endfor %}
+              </div>
+          {% endif %}
+    </div>
+           </div>
+
+           <div class="col-sm-12 col-lg-3">
+              <div class="p-2 rounded asp_sidebar" style="background-color:#f2f2f2;">
+                   <div>
+                      <h4>Other ASP</h4><hr>
+                   </div>
+                   <a href="{% url 'index:ASP' 'Msamala ASP'%}">Msamala ASP</a>
+                    <a href="{% url 'index:ASP' 'Nkaya ASP'%}">Nkaya ASP</a>
+                    <a href="{% url 'index:ASP' 'Kachenga ASP'%}">Kachenga ASP</a>
+                    <a href="{% url 'index:ASP' 'Chanthunya ASP'%}">Chanthunya ASP</a>
+                    <a href="{% url 'index:ASP' 'Kalembo ASP'%}">Kalembo ASP</a>
+                    <a href="{% url 'index:ASP' 'Amidu ASP'%}">Amidu ASP</a>
+                    <a href="{% url 'index:ASP' 'Sawali ASP'%}">Sawali ASP</a>
+                    <a href="{% url 'index:ASP' 'Matola ASP'%}">Matola ASP</a>
+                    <a href="{% url 'index:ASP' 'Phalula ASP'%}">Phalula ASP</a>
+                    <a href="{% url 'index:ASP' 'Toleza ASP'%}">Toleza ASP</a>
+              </div>
+           </div>
+       </div>
+   </div>
+</section>
+
+<section>
+ 
+</section>
+
+
+{% include 'index/coordination.html' %}
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+{% endblock %}

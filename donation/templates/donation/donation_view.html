@@ -1,0 +1,109 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddn.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'account:dashboard' %}">Dashboard</a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Donation</a>
+          <hr>
+          <h4>Donation received</h4>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-2">
+     <div class="container">
+         <div class="row">
+              <div class="col-sm-12 col-lg-12  my-2 table-responsive">
+                   <div id="donation_view">
+                  
+                    <div class="p-2 rounded">
+                       <table class="table table-striped ">
+                          <thead style="background-color:rgb(0,0,153);color:white;">
+                             <tr>
+                             <th>Name</th>
+                             <th>Amount</th>
+                             <th>Ref code</th>
+                             <th>Phone</th>
+                             <th>Email</th>
+                          </tr>
+                          </thead>
+                          {% for give in give %}
+                          <tr> 
+                              <td>{{give}}<br>
+                              {% if give.paypal == True %}
+                                 <small style="color:green;">paypal</small>
+                              {% else %}
+                                 <small style="color:green;">Mobile money |
+                                     {% if give.verified == True %}
+                                       Verified
+                                       <i class="fa fa-check" aria-hidden="true"></i>
+                                     {% else %}
+                                       <a accesskey="{{give.id}}" id="verify_give" href="javascript:void(0);">Verify</a>
+                                     {% endif %}
+                                 </small>
+                              {% endif %}
+                             </td>
+                             {% if give.paypal == True %}
+                              <td>$ {{give.amount}}</td>
+                              {% else %}
+                              <td>Mk {{give.amount}}</td>
+                              {% endif %}
+                              <td>{{give.ref}}</td>
+                              <td>{{give.phone}}</td>
+                              <td>{{give.email}}</td>
+                          </tr>
+                          {% empty %}
+                          <tr>
+                             <td colspan="5">No donation found !!!</td>
+                          </tr>
+                          {% endfor %}
+                       </table>
+                    </div>
+                  
+                </div>
+                  <!--_______________________pagination_________________________________-->
+           <div class="col-sm-12 my-2">
+               <div class="pagination">
+                <span class="step-links">
+                    {% if give.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{give.previous_page_number }}">
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{give.number }} of {{give.paginator.num_pages }}.
+                    </span>
+
+                    {% if give.has_next %}
+                        <a href="?page={{give.next_page_number }}">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="?page={{give.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+           </div>
+<!--__________________________________________________________________-->
+              </div>
+         </div>
+     </div>
+</section>
+
+{% endblock %}

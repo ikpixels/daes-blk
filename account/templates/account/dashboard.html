@@ -1,0 +1,156 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ph.jpg'%})no-repeat;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Dashboard</a>
+          <hr>
+          <h4>Dashboard</h4>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-4">
+   <div class="container">
+       <div class="row">
+           
+           <div class="col-sm-12 col-lg-6 p-4 my-2 rounded" style="border:2px solid black;">
+               <div class="row">
+
+           <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/team.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'account:TeamMember' %}">Add team member</a>
+                 </div>
+             </div>
+         </div>
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/partnership.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'account:Partiners'%}">Add Partiner Logo</a>
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/event_icon.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'event:event_form'%}">Create event</a>
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/story.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'achievement:Achievement_form'%}">Add Success story</a>
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/job.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'career:job_form'%}">Add job</a>
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/document.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'event:DocuForm'%}">Add document</a>
+                 </div>
+             </div>
+         </div>
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/brand.png '%}" height="50">
+                 <div>
+                   <a href="{% url 'products:products_form'%}">Add product</a>
+                 </div>
+             </div>
+         </div>
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/video.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'publications:videoform'%}">Add video</a>
+                 </div>
+             </div>
+         </div>
+
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/pj.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'projects:PjForm'%}">Add Project</a>
+                 </div>
+             </div>
+         </div>
+
+         <div class="col-sm-6 col-lg-4 my-1">
+             <div class="rounded text-center" style="background:#f2f2f2;">
+                 <img src="{% static 'img/pj.png '%}" height="50">
+                 <div>
+                    <a href="{% url 'give:donation_view' %}">Donations</a>
+                 </div>
+             </div>
+         </div>
+
+
+  
+      </div>
+           </div>
+
+           <div class="col-sm-12 col-lg-6 table-responsive">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <td>ASP</td>
+                        <td>Male</td>
+                        <td>Female</td>
+                        <td>Total</td>
+                     </tr>
+                     {% for cord in cord %}
+                          <tr>
+                             <td>{{cord}}
+                               <a  href="{% url 'publications:aspForm' cord.id %}"><i class="fas fa-user-edit"></i></a>
+                             </td>
+                             <td>{{cord.male}}</td>
+                             <td>{{cord.female}}</td>
+                             <td>{{cord.total}}</td>
+                          </tr>
+                      {% endfor %}
+                  </thead>
+               </table>
+           </div>
+       </div>
+   </div>
+</section>
+{% endblock %}

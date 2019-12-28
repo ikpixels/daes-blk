@@ -1,0 +1,62 @@
+{% load static %}
+<!----------------key partners section--------------->
+{% if contacts %}
+<section class="pt-4 pb-4" >
+  <div class="container">
+    <div class="text-center pb-4 div_header">
+       <h4>Team</h4>
+
+   </div>
+    <div class="owl-carousel text-center" id="item_list2">
+      {% for contact in contacts %}
+         <div class="p-2 rounded teammember" id="teammember">
+            
+               <h4 style="color:white;"><strong>{{contact.name}}</strong></h4>
+               {% if contact.file %}
+               <img src="{{contact.file.url}}" class="img-fluid rounded-circle">
+               {% else %}
+               <img src="{% static 'img/blk1.png' %}" class="img-fluid rounded-rounded">
+               {% endif %}
+               <p>{{contact.position}}</p>
+               
+                <div class="text-center">
+
+                    {% if contact.facebook %}
+                    <a class="mr-4" href="{{contact.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                    {% else %}
+                    <a class="mr-4" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+
+                    {% if contact.linkedin %}
+                       <a class="mr-4" href="{{contact.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                    {% else %}
+                       <a class="mr-4" href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+                    </div>
+              <div class="rounded inner_teammember p-4" id="inner_teammember"> <h4 style="color:white;"><strong>{{contact.name}}</strong></h4>
+                  <img src="{{contact.file.url}}" class="img-fluid rounded-circle">
+                  <a href="{% url 'index:tema_detail' contact.slug %}">Chat with me</a>
+                 <div class="text-center">
+
+                    {% if contact.facebook %}
+                    <a class="mr-4" href="{{contact.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                    {% else %}
+                    <a class="mr-4" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+
+                    {% if contact.linkedin %}
+                       <a class="mr-4" href="{{contact.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                    {% else %}
+                       <a class="mr-4" href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+
+                    <a href="{% url 'index:tema_detail' contact.slug %}"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+               </div>
+           
+         </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

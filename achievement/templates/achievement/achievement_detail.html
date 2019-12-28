@@ -1,0 +1,61 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'achievement:achievement' %}">Success stories</a>
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Detail</a>
+          <hr>
+          <h4>Success story detail</h4>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-2 event_list">
+   <div class="container">
+      <div class="row">
+          <div class="col-sm-12 col-lg-8">
+              <div class="p-2 my-2 rounded" style="background-color:#f2f2f2;">
+                 <h4>{{item}}</h4><hr>
+                 {% if item.image %}
+                 <img src="{{item.image.url}}" class="img-fluid rounded">
+                 {% else %}
+                 <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+                 {% endif %}
+                 <p>{{item.body|safe}}</p>
+              </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-4">
+               <div class="my-2">
+                  <h4>Other success stories</h4><hr>
+                  {% for item in other_item %}
+                    <div class="mb-2 p-2 rounded" style="background-color:#f2f2f2;position:relative;">
+                       <a href="{% url 'achievement:detail' item.slug %}">
+                         <img src="{{item.image.url}}" class="img-fluid rounded">
+                       </a>
+                       <p>{{item}}</p>
+                    </div>
+                  {% endfor %}
+               </div>
+          </div>
+      </div>
+   </div>
+</section>
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+{% endblock %}

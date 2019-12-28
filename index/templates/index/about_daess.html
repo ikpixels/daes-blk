@@ -1,0 +1,109 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+
+<section class="animatedParent"  style="background:url({% static 'img/banner9.jpg'%});background-repeat: no-repeat;background-position: center center;background-size:cover;background-attachment:fixed;height:90vh;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">About DAESS</a>
+          <hr>
+<!-----------------------form view------------------------------->
+          <div id="banner_text1">
+             <div>
+                <h2 class="animated bounceInLeft" style="color:rgb(0,0,153);"><strong>About Balaka DAESS</strong></h2>
+                <h1 class="animated bounceInRight mb-4" style="color:white;"><strong >District Agricultural Extension Services System </strong></h1>
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:20px;">
+                <a class="" href="#daess">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+<!------------------------desktop view----------------------------->
+          <div id="banner_text2">
+             <div>
+                <h2 class="mt-4 animated bounceInLeft" style="color:rgb(0,0,153);"><strong>About Balaka DAESS</strong></h2>
+                <h1 class="animated bounceInRight mb-4" style="color:white;font-size:80px;"><strong >District Agricultural Extension Services System </strong></h1>
+
+             </div>
+             <div class="text-center animated bounceInDown" style="padding-top:20px;">
+                <a class="" href="#daess">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+          </div>
+<!---------------------search form------------------------------------->
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+
+<section class="pt-4 pb-4 my-4">
+   <div class="container">
+       <div class="text-center div_header pb-4 pt-4">
+         <h4>Our main focal areas </h4>
+      </div>
+       <div class="row">
+           <div class="col-sm-12 col-lg-2">
+             
+           </div>
+           <div class="col-sm-12 col-lg-8 animatedParent text-center" data-sequence='500' id="focal_areas">
+               <p class='animated fadeInRight' data-id='1'><strong>Organization of farmers demands:</strong> Farmers in their wealth & gender categories together identify priority agriculture felt needs & decide on action to undertake.</p>
+               <p class='animated fadeInLeft' data-id='2'><strong>Organizing service providers’ response to farmers’ needs:</strong> identifying and engaging service providers that would respond to farmers’ needs.</p>
+                <p class='animated fadeInRight' data-id='3'><strong>Stakeholders Coordination, collaboration and co-location:</strong> Service providers can support farmers’ needs as an individual organization or in collaboration with other stakeholders.</p>
+                <p class='animated fadeInLeft' data-id='4'><strong>Funding acquisition:</strong> district council will have to find ways of financing agricultural extension services from a diverse source of funds existing in the  districts</p>
+           </div>
+       </div>
+   </div>
+</section>
+
+<section class="my-2 p-4" style="background-color:#f2f2f2;"><a name="daess"></a>
+   <div class="container">
+
+      <div class="text-center div_header pb-4 pt-4">
+         <h4>About Balaka DAESS</h4>
+      </div>
+      <div class="row">
+
+          <div class="col-sm-12 col-lg-6">
+             <div>
+                <img src="{% static 'img/daecc2.png' %}" class="img-fluid rounded">
+             </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6">
+             <div>
+                <p class="text-justify">District Agricultural Extension Services System (DAESS) is a decentralized extension system that seeks to enhance collaboration and coordination of service providers in agricultural extension and advisory services in order to promote harmonization and integration in service provision</p>
+                <p class="text-justify">The DAESS operationalizes implementation of the Agricultural Extension Policy which advocates for pluralistic and demand driven extension services</p>
+                <p class="text-justify">It promotes quality interaction of actors for collective visioning, planning and implementation of interventions.</p>
+                <p class="text-justify">DAESS empowers farmers and other clientele to access high quality extension services from those that are best able to provide them</p>
+                <p class="text-justify">DAESS is a mechanism for enabling farmers to identify and organize their agricultural felt needs for appropriate action by relevant stakeholders</p>
+             </div>
+
+          </div>
+      
+
+      </div>
+
+      
+   </div>
+</section>
+
+
+
+{% include 'index/team2.html'%}
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+{% endblock %}

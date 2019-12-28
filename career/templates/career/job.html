@@ -1,0 +1,155 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/career.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="{% url 'career:job' %}">Job</a>
+
+          {% if cart %}
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">{{cart}}</a>
+          {% endif%}
+
+          <hr>
+          <div class="item_category">
+             <div >
+                <a href="javascript:void(0);">ALL CATEGORIES</a>
+             </div>
+             <div class="item_content p-4 rounded">
+                <div class="row">
+                     <div class="col-sm-12 col-lg-3">
+                         <a href="{% url 'career:job_category' 'Consultancy' %}">Consultancy</a>
+                         <a href="{% url 'career:job_category' 'Contract' %}">Contract</a>
+                         <a href="{% url 'career:job_category' 'Event' %}">Event</a>
+                         <a href="{% url 'career:job_category' 'Full Time' %}">
+                          Full Time</a>
+                         <a href="{% url 'career:job_category' 'Funding' %}">Funding</a> 
+                     </div>
+                     <div class="col-sm-12 col-lg-3">
+                        
+                         <a href="{% url 'career:job_category' 'Hourly Paid' %}">Hourly Paid</a>
+                         <a href="{% url 'career:job_category' 'International' %}">International</a>
+                         <a href="{% url 'career:job_category' 'Internship' %}">Internship</a>
+                         <a href="{% url 'career:job_category' 'Part Time' %}">Part Time</a>
+                         <a href="{% url 'career:job_category' 'Scholarship' %}">Scholarship</a>
+                     </div>
+                     <div class="col-sm-12 col-lg-3">
+                         <a href="{% url 'career:job_category' 'Seasonal' %}">Seasonal</a>
+                         <a href="{% url 'career:job_category' 'Short-Term' %}">Short-Term</a>
+                         <a href="{% url 'career:job_category' 'Temporary' %}">Temporary</a>
+                         <a href="{% url 'career:job_category' 'Training' %}">Training</a>
+                         <a href="{% url 'career:job_category' 'Volunteer' %}">Volunteer</a>
+                     </div>
+                </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-4">
+    <div class="container">
+
+        {% if alert %}
+         <div id="alert" class="alert">
+            <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+            <p style="color:rgb(0,128,0);">{{alert}}</p>
+         </div>
+        {% endif %}
+
+         <div class="row">
+             <div class="col-sm-12 col-lg-8">
+                 {% for job in job %}
+                 <div class="row p-3 rounded mb-2" id="job_list">
+                     <div class="col-sm-2 col-lg-2">
+                        {% if job.file %}
+                        <img src="{{job.file.url}}" class="img-fluid">
+                        {% else %}
+                        <img src="{% static 'img/blk1.png' %}" class="img-fluid rounded">
+                        {% endif %}
+                     </div>
+
+                     <div class="col-sm-10 col-lg-10">
+
+                        <h4><a href="{% url 'career:job_detail' job.slug %}">{{job.title}}</a></h4>
+                        <p><span class="p-1" id="job_cat">{{job.category}}</span> {{job.orginisaton}}</p>
+                        <small>Posted {{job.whenpublished}}</small>
+                     </div>
+                 </div>
+                 {% empty%}
+                    <div class="col-sm-12 rounded" style="background-color:#f2f2f2;">
+                      {% include 'index/error.html' %}
+                   </div>
+                 {% endfor %}
+<!--________________________pagination_________________________________-->
+           <div class="col-sm-12">
+               <div class="pagination">
+                <span class="step-links">
+                    {% if job.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{ job.previous_page_number }}">
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{job.number }} of {{job.paginator.num_pages }}.
+                    </span>
+
+                    {% if job.has_next %}
+                        <a href="?page={{job.next_page_number }}">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="?page={{job.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+           </div>
+<!--__________________________________________________________________-->
+             </div>
+
+             <div class="col-sm-12 col-lg-4">
+               
+             </div>
+
+         </div>
+    </div>
+</section>
+
+{% include 'index/subscribe.html'%}
+
+{% if partners %}
+<section class="pt-4 pb-4">
+  <div class="container">
+    <div class="text-center pb-4 div_header">
+       <h4>Our Key Partners </h4>
+   </div>
+    <div class="owl-carousel text-center" id="item_list">
+      {% for partners in partners %}
+         <div>
+            <a href="{{partners.link}}">
+               <img src="{{partners.file.url}}" class="img-fluid" >
+            </a>
+         </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

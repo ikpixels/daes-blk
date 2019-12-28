@@ -1,0 +1,41 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddn.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="give:donation">Donate</a>
+          <hr>
+          <h4>Give</h4>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-2 donate">
+   <div class="container">
+       <div class="row">
+          <div class="col-sm-12 col-lg-4">
+           <!--------------pass------------------->
+          </div>
+
+          <div class="col-sm-12 col-lg-4 text-center p-4 mx-2 rounded" style="background:#f2f2f2;">
+           <img src="{% static 'img/thank.png' %}" height="100">
+           <p>Thanks for your donation <span style="color:green;">{{donar}}</span></p>
+           <h4> Your more than kind !!</h4>
+           <a id="custom_btn" href="{% url 'index:index' %}">Go home</a>
+          </div>
+       </div>
+   </div>
+</section>
+{% endblock %}

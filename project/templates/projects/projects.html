@@ -1,0 +1,134 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">/</a>
+          <a href="#">Projects</a>
+          <hr>
+          <div class="item_category">
+             <div >
+                <a href="javascripts:void(0)">FILTER</a>
+             </div>
+             <div class="item_content p-4 rounded">
+
+                 <div class="row">
+                    <div class="col-sm-12 col-lg-2">
+                      <a href="{% url 'projects:projects2' 'Bazale'%}">Bazale</a>
+                      <a href="{% url 'projects:projects2' 'Ulongwe'%}">Ulongwe</a>
+                      <a href="{% url 'projects:projects2' 'Mpilisi'%}">Mpilisi</a>
+                      <a href="{% url 'projects:projects2' 'Rivirivi'%}">Rivirivi</a>
+                      <a href="{% url 'projects:projects2' 'Phalula'%}">Phalula</a>
+                      
+                </div>
+                <div class="col-sm-12 col-lg-2">
+                       <a href="{% url 'projects:projects2' 'Msamala'%}">Msamala</a>
+                       <a href="{% url 'projects:projects2' 'Nkaya'%}">Nkaya</a>
+                       <a href="{% url 'projects:projects2' 'Kachenga'%}">Kachenga</a>
+                       <a href="{% url 'projects:projects2' 'Kachenga'%}">Chanthunya</a>
+                       <a href="{% url 'projects:projects2' 'Kalembo'%}">Kalembo</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2">
+                       <a href="{% url 'projects:projects2' 'Amidu'%}">Amidu</a>
+                       <a href="{% url 'projects:projects2' 'Sawali'%}">Sawali</a>
+                       <a href="{% url 'projects:projects2' 'Matola'%}">Matola</a>
+                       <a href="{% url 'projects:projects2' 'Toleza'%}">Toleza</a>
+                       <a href="{% url 'projects:projects2' 'Utale'%}">Utale</a>
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                       <h4 style="color:black;"><span>Almost </span>{{pj_count}} projects are being implemented in Balaka</h4>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+
+<section class="my-4">
+   <div class="container">
+
+       {% if alert %}
+         <div id="alert" class="alert">
+            <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+            <p style="color:rgb(0,128,0);">{{alert}}</p>
+         </div>
+        {% endif %}
+
+       <div class="row animatedParent">
+           {% for pj in pj %}
+           <div class="col-sm-12 col-lg-6 animated fadeInUp">
+               <div class="p-2">
+
+                  {% if request.user.is_authenticated %}
+                     <div id="daess_edit">
+                        <a style="color:white;" href="{% url 'projects:EditPj' pj.id %}"><i class="fas fa-user-edit"></i></a>
+                        <a style="color:white;" href="{% url 'projects:removePj' pj.id %}"><i class="fas fa-trash-alt"></i></a>
+                     </div>
+                     {% endif %}
+                  
+                  <a href="{% url 'projects:PjDetail' pj.slug %}">
+                    {% if pj.image %}
+                    <img src="{{pj.image.url}}" class="img-fluid rounded">
+                    {% else %}
+                    <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+                    {% endif %}
+                  </a>
+                  <h4>{{pj}}</h4>
+               </div>
+           </div>
+           {% empty %}
+           <div class="col-sm-12">
+              {% include 'index/error.html'%}
+           </div>
+           {% endfor %}
+<!--_______________________pagination_________________________________-->
+           <div class="col-sm-12">
+               <div class="pagination">
+                <span class="step-links">
+                    {% if pj.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{pj.previous_page_number }}">
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{pj.number }} of {{pj.paginator.num_pages }}.
+                    </span>
+
+                    {% if pj.has_next %}
+                        <a href="?page={{pj.next_page_number }}">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="?page={{pj.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+           </div>
+<!--__________________________________________________________________-->
+       </div>
+   </div>
+</section>
+
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+{% endblock %}

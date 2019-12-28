@@ -1,0 +1,95 @@
+{% extends "index/base.html"%}
+{% load embed_video_tags %}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section style="background:url({% static 'img/ddd.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+      <div class="p-4 page_header">
+          <a href="{% url 'index:index' %}">
+           Home
+           
+          </a> 
+          <a href="javascripts:void(0);">></a>
+          <a href="#">Videos</a>
+          <hr>
+           <div class="item_category">
+             <div >
+                <a href="javascripts:void(0)">FILTER</a>
+             </div>
+             <div class="item_content p-4 rounded">
+
+                 <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                      <div class="video-responsive my-2">
+                         <iframe width="420" height="315" src="{{item2.split_link}}" frameborder="0" allowfullscreen></iframe>
+                      </div>
+                </div>
+                <div class="col-sm-12 col-lg-4">
+                       <a href="{% url 'publications:videos2' 'Agricuture Extension video' %}">Agricuture Extension videos</a>
+                       <a href="{% url 'publications:videos2' 'Nutrition Extension videos' %}">Nutrition Extension videos</a>
+                       <a href="{% url 'publications:videos2' 'Success stories' %}">Success stories</a>
+                       <a href="{% url 'publications:videos2' 'Event' %}">Event</a>
+                       <a href="{% url 'publications:videos2' 'Documentary' %}">Documentary</a>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+</section>
+
+<section class="my-4 event_list">
+   <div class="container">
+          <div class="row">
+          {% for item in item %}
+            <div class="col-sm-12 col-lg-6">
+              <div class="video-responsive my-2">
+                <iframe class="rounded" width="420" height="315" src="{{item.split_link}}" frameborder="0" allowfullscreen></iframe>
+              </div>
+           </div>
+          {% empty%}
+              <div class="col-sm-12">
+                 {% include 'index/error.html'%}
+              </div>
+          {% endfor%}
+<!--_______________________pagination_________________________________-->
+           <div class="col-sm-12">
+               <div class="pagination">
+                <span class="step-links">
+                    {% if item.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{ item.previous_page_number }}">
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ item.number }} of {{item.paginator.num_pages }}.
+                    </span>
+
+                    {% if item.has_next %}
+                        <a href="?page={{item.next_page_number }}">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="?page={{item.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+           </div>
+<!--____________________________________________________________________-->
+        </div>
+      
+   </div>
+</section>
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+{% endblock %}

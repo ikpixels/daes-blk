@@ -1,0 +1,189 @@
+{% load static %}
+<div class="p-2 mb-4" id="top_search" >
+	<div class="">
+		<a id="Search_btn" href="javascript:void(0);">
+		 	<i class="fa fa-search" aria-hidden="true"></i>
+		</a>
+		<a class="donate_btn2 p-1 rounded" href="{%url 'give:donation'%}">
+		Donate now</a>
+	</div>
+</div>
+<section id="top_header" style="background:rgb(0,0,153);">
+	<div class="container">
+		<a class="co" href="jascript:void(0);">
+		<i class="fa fa-phone" aria-hidden="true"></i>
+		+(265) 01-552-020/048</a>
+		<a class="co" href="jascript:void(0);">
+		<i class="fa fa-fax" aria-hidden="true"></i>
+		Fax +(265) 1-552-020</a>
+		
+
+        <div class="ml-4" id="donate_btn">
+			<a href="{%url 'give:donation'%}">Donate now</a>
+		</div>
+
+		<div style="float:right;">
+			{% if request.user.is_authenticated %}
+			 <div class="logout">
+			 	<a href="">
+			 	<i class="fa fa-user" aria-hidden="true"></i>
+			 	My account</a>
+			 	<div class="daess_account rounded-bottom">
+			 		<a href="{% url 'account:dashboard' %}">Dashboard</a>
+			 		<a href="{% url 'account:logout' %}">
+			 		Logout</a>
+			 	</div>
+			 </div>
+			{% else%}
+			<a href="{% url 'account:account'%}">
+			<i class="fa fa-sign-in" aria-hidden="true"></i>
+			Login</a>
+			{% endif %}
+
+		</div>
+		
+	</div>
+</section>
+
+
+<section id="nav_bar" style="background:rgb(0,0,153);">
+	<div class="container rounded-top" id="inner_nav">
+	     <a href="javascript:void(0);">
+	     	<img src="{% static 'img/daess.png'%}" height="40">
+	     </a> 
+
+	     <div class="nav_item pt-1">
+		 	<a id="Search_btn3" href="javascript:void(0);">
+		 		<i class="fa fa-search" aria-hidden="true"></i>
+		 	</a>
+		 </div>
+
+	     <div class="nav_item">
+		 	<a href="{% url 'index:contact' %}">Contact</a>
+		 </div>
+
+		 <div class="nav_item">
+		 	<a href="{% url 'projects:projects' %}">Projects</a>
+		 </div>
+		 <div class="nav_item">
+		 	<a href="javascript:void(0);">Stay informed
+		 		<i class="fa fa-caret-down" aria-hidden="true"></i>
+		 	</a>
+		 	<div class="nav_content nav2 rounded-bottom">
+		 		<a href="{% url 'event:event' %}">Upcoming events</a>
+		 		<a href="{% url 'achievement:achievement' %}">Success stories</a>
+		 		<a href="{% url 'publications:videos'%}">Extension videos</a>
+		 		<a href="{% url 'event:document_view' %}">Documents</a>
+		 		<a href="http://bit.do/DAECC-Balaka ">Dropbox</a>
+		 	</div>
+		 </div>
+		 
+		 <div class="nav_item">
+		 	<a href="{% url 'career:job' %}">Careers</a>
+		 </div>
+		 <div class="nav_item">
+		 	<a href="{% url 'products:products' %}">Products</a>
+		 </div>
+		 <div class="nav_item">
+		 	<a href="javascript:void(0);">
+		 	About DAESS
+		 	<i class="fa fa-caret-down" aria-hidden="true"></i>
+		 </a>
+		 	<div class="nav_content rounded-bottom">
+		 		<a href="{% url 'index:about_daess' %}">About Balaka DAESS</a>
+		 		<a href="{% url 'index:objective' %}">Objectives</a>
+		 		<a href="{% url 'index:structure'%}">Structure</a>
+		 		<a href="{% url 'index:team'%}">Team</a>
+		 	</div>
+		 </div>
+		 
+		 <div class="nav_item">
+		 	<a href="{% url 'index:index' %}">Home</a>
+		 </div>
+		 <div id="menu">
+		 	<a href="javascript:void(0);" id="menu_btn">
+		 		<i class="fa fa-bars" aria-hidden="true"></i>
+		 	</a>
+		 </div>
+	</div>
+</section>
+
+<!------------------min navbar------------------------------->
+<section class="min_navbar p-2">
+	<a href="javascript:void(0);" class="close" id="menu_btn2" style="color:white;">
+		<i class="fa fa-times" aria-hidden="true"></i>
+    </a>
+	<div class="mx-4 p-3">
+		<div class="nav_item2">
+		 	<a href="{% url 'index:index' %}">Home</a>
+		</div>
+
+		<div class="nav_item2">
+		 	<a href="javascript:void(0);">About DAESS
+		 		<i class="fa fa-caret-down" aria-hidden="true"></i>
+		 	</a>
+		 	<div class="nav_content rounded-bottom">
+		 		<a href="{% url 'index:about_daess' %}">About Balaka DAESS</a>
+		 		<a href="{% url 'index:objective' %}">Objectives</a>
+		 		<a href="{% url 'index:structure'%}">Structure</a>
+		 		<a href="{% url 'index:team'%}">Team</a>
+		 	</div>
+		</div>
+
+		<div class="nav_item2">
+		 	<a href="{% url 'products:products' %}">Products</a>
+		</div>
+
+		<div class="nav_item2">
+		 	<a href="javascript:void(0);">Stay informed
+		 		<i class="fa fa-caret-down" aria-hidden="true"></i>
+		 	</a>
+		 	<div class="nav_content rounded-bottom">
+		 		<a href="{% url 'event:event' %}">Upcoming events</a>
+		 		<a href="{% url 'achievement:achievement' %}">Success stories</a>
+		 		<a href="{% url 'publications:videos'%}">Extension videos</a>
+		 		<a href="{% url 'event:document_view' %}">Documents</a>
+		 		<a href="http://bit.do/DAECC-Balaka ">Dropbox</a>
+		 	</div>
+		 </div>
+
+		 <div class="nav_item2">
+		 	<a href="{% url 'career:job' %}">Careers</a>
+		 </div>
+
+		 <div class="nav_item2">
+		 	<a href="{% url 'projects:projects' %}">Projects</a>
+		 </div>
+
+		 <div class="nav_item2">
+		 	<a href="{% url 'index:contact' %}">Contact</a>
+		 </div>
+
+		 <div >
+			{% if request.user.is_authenticated %}
+
+			 	<div class="nav_item2">
+			 		<a href="{% url 'account:dashboard' %}">Dashboard</a>
+			 	</div>
+
+			 	<div class="nav_item2">
+			 		<a href="{% url 'account:logout' %}">
+			 		Logout</a>
+			 	</div>
+			 
+			{% else%}
+			 <div class="nav_item2">
+			 	 <a href="{% url 'account:account'%}">
+			        <i class="fa fa-sign-in" aria-hidden="true"></i>
+			        Login
+			     </a>
+			 </div>
+			{% endif %}
+
+		</div>
+	
+	</div>
+</section>
+
+
+

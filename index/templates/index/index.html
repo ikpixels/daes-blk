@@ -1,0 +1,232 @@
+{% extends "index/base.html"%}
+{% load static %}
+
+
+    
+{% block body %}
+
+<section id="home_slinder" class="animatedParent"  style="">
+   <div style="background:rgba(0,0,0,0.3);height:90vh;">
+   <div class="container">
+      <div class="p-4 page_header">
+
+<!-----------------mobile view----------------------------------->
+          <div  class="p-4" id="banner_text1">
+             <div>
+                <H2><strong style="color:white;">Welcome to</strong></H2>
+                <h1 class="animated bounceInRight" style="color:rgb(0,0,153);"><strong >Balaka DAESS</strong></h1>
+                <h2 class="animated bounceInLeft" style="color:white;"><strong>District Agricultural Extension Services System</strong></h2>
+             </div>
+             <div class="animated bounceInDown mt-4">
+                <a id="home_btn" class="mr-2" href="{%url 'give:donation'%}">
+                   Donate now
+                </a>
+                
+             </div>
+          
+
+          <div class="text-center animated bounceInDown" style="padding-top:15px;">
+                <a class="" href="#bottom">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+
+          </div>
+<!-------------------------------desktop view--------------------->
+<div  class="p-4" id="banner_text2">
+
+             <div>
+                <H2><strong style="color:white;">Welcome to</strong></H2>
+                <h1 class="animated bounceInRight" style="color:rgb(0,0,153);"><strong >Balaka DAESS</strong></h1>
+                <h2 class="animated bounceInLeft" style="color:white;font-size:80px;"><strong>District Agricultural Extension Services System</strong></h2>
+             </div>
+
+             <div class="animated bounceInDown mt-4">
+                <a id="home_btn" class="mr-2" href="{%url 'give:donation'%}">
+                   Donate now
+                </a>
+                
+             </div>
+          
+
+          <div class="mt-4 text-center animated bounceInDown" style="padding-top:15px;">
+                <a class="mt-4" href="#bottom">
+                   <img src="{% static 'img/b_arrow.png' %}" height="50">
+                </a>
+             </div>
+
+          </div>
+<!------------------------search bar---------------------------------->
+          {% include 'index/search.html' %}
+      </div>
+   </div>
+ </div>
+</section>
+
+
+<section class="pt-4 pb-4 my-4"><a name="bottom"></a>
+   <div class="container">
+       <div class="text-center div_header pb-4 pt-4">
+         <h4>Our main focal areas </h4>
+      </div>
+       <div class="row">
+           <div class="col-sm-12 col-lg-2">
+             
+           </div>
+           <div class="col-sm-12 col-lg-8 animatedParent text-center" data-sequence='500' id="focal_areas">
+               <p class='animated fadeInRight' data-id='1'><strong>Organization of farmers demands:</strong> Farmers in their wealth & gender categories together identify priority agriculture felt needs & decide on action to undertake.</p>
+               <p class='animated fadeInLeft' data-id='2'><strong>Organizing service providers’ response to farmers’ needs:</strong> identifying and engaging service providers that would respond to farmers’ needs.</p>
+                <p class='animated fadeInRight' data-id='3'><strong>Stakeholders Coordination, collaboration and co-location:</strong> Service providers can support farmers’ needs as an individual organization or in collaboration with other stakeholders.</p>
+                <p class='animated fadeInLeft' data-id='4'><strong>Funding acquisition:</strong> district council will have to find ways of financing agricultural extension services from a diverse source of funds existing in the  districts</p>
+           </div>
+       </div>
+   </div>
+</section>
+
+
+{% if achievement %}
+<section class="animatedParent" id="index_achievement" style="background:url({% static 'img/hh.png'%});background-repeat:no-repeat;background-position: center center;background-size: cover;">
+   <div class="container">
+       <div class="text-center div_header">
+          <h4>Our success stories</h4>
+       </div>
+       <div class="row">
+
+          {% for achievement in achievement %}
+          <div class="col-sm-12 col-lg-6">
+           <div class="achievement my-2 rounded p-2 animated fadeInUpShort">
+              {% if achievement.image %}
+              <img src="{{achievement.image.url}}" class="img-fluid rounded">
+              {% else %}
+              <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+              {% endif%}
+              <div class="inner_achievement">
+                 <a href="{% url 'achievement:detail' achievement.slug %}">
+                   <img src="{% static 'img/btn.png'%}" class="img-fluid rounded">
+                 </a>
+              </div>
+              <p class=""><strong>{{achievement}}</strong></p>
+           </div>
+          </div>
+
+          {% endfor %}
+
+           <div class="text-center p-2 my-4 col-sm-12">
+                 <a id="custom_btn" href="{% url 'achievement:achievement' %}">View more</a>
+          </div>
+         
+       </div>
+   </div>
+</section>
+{% endif %}
+
+{% if event %}
+<section class="" id="index_event">
+   <div class="text-center mb-4 div_header">
+       <h4>Upcoming events</h4>
+   </div>
+   <div class="container">
+      <div class="row">
+          {% for event in event %}
+          <div class="col-sm-12 col-lg-6 animatedParent">
+             <div class="my-2 top_index_event animated fadeInUpShort">
+                <a href="{% url 'event:event_detail' event.slug %}"> {% if event.image %}
+                  <img src="{{event.image.url}}" class="img-fluid rounded">
+                  {% else %}
+                  <img src="{% static 'img/blk2.png' %}" class="img-fluid rounded">
+                  {% endif %}
+                </a>
+                
+                <div class="inner_index_event rounded p-1"
+                style="background:url({% static 'img/event.png'%});background-repeat:no-repeat;background-size: cover;">
+                 <a href="javascript:void(0);">
+                    <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                    {{event.location}}
+                 </a><br>
+                 <a href="javascript:void(0);">
+                    <i class="fa fa-calendar mr-1" aria-hidden="true"></i>
+                    {{event.Event_date}}
+                 </a><br>
+                 <a href="javascript:void(0);">
+                    <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>
+                    {{event.time}}
+                 </a><br>
+
+                 <a href="{% url 'event:event_detail' event.slug %}"><small>Learn more...</small></a>
+         
+                
+                </div>
+                
+
+             </div>
+             <p style="color:black;"><strong>{{event}}</strong></p>
+          </div>
+          {% endfor %}
+          <div class="text-center p-2 my-4 col-sm-12">
+                 <a id="custom_btn" href="{% url 'event:event' %}">View more</a>
+          </div>
+      </div>
+   </div>
+</section>
+{% endif %}
+
+
+<section class=" mb-4 index_job" style="background:url({% static 'img/career2.jpg'%});background-repeat: no-repeat;background-position: center center;
+  background-size: cover;background-attachment: fixed;">
+   <div class="container">
+       <div class="text-center p-4">
+           <h1 class="mb-4" style="color:white;"><strong>Careers in Agriculture and Nutrition</strong></h1>
+           <h4 class="mb-4" style="color:white;"><strong>
+             Explore Balaka  Agriculture career opportunities. Positions open across our key partners.
+           </strong> </h4>
+           <a class="mt-4" id="custom_btn7" href="{% url 'career:job'%}">Work with us</a>
+       </div>
+   </div>
+</section>
+
+<!-----------------------------------item---------------------->
+<section class="my-4 animatedParent" id="Services33">
+   <div class="container">
+       <div class="row">
+           <div class="col-sm-12 col-lg-6">
+              <div class="index_item my-2 animated fadeInUpShort">
+                 <img src="{% static 'img/item3.jpg' %}" class="img-fluid rounded">
+                 <div class="index_inner_item">
+                   <img src="{% static 'img/item2.png' %}" class="img-fluid rounded">
+                 </div>
+                 <div class="index_inner_item2 text-center">
+                    <h1 id="">Buy products from our smallholder farmers and agro-dealers</h1>
+                    
+
+                 </div>
+                 <a id="custom_btn5" href="{% url 'products:products' %}">Visit our markets</a>
+              </div>
+           </div>
+           <div class="col-sm-12 col-lg-6">
+              <div class="index_item my-2 animated fadeInUpShort">
+                 <img src="{% static 'img/item2.jpg' %}" class="img-fluid rounded">
+                 <div class="index_inner_item">
+                   <img src="{% static 'img/item3.png' %}" class="img-fluid rounded">
+                 </div>
+                 <div class="index_inner_item2 text-center">
+                    <h1 id="">Explore projects that is being implimented by our partners</h1>
+                   
+                 </div>
+                 <a id="custom_btn6" href="{% url 'projects:projects'%}">View our projects</a>
+              </div>
+           </div>
+       </div>
+   </div>
+
+</section>
+
+
+{% include 'index/subscribe.html'%}
+{% include 'index/partiners.html' %}
+
+
+
+
+
+
+{% endblock %}
